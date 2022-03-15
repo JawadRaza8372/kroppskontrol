@@ -17,12 +17,12 @@ const AuthScreen = () => {
         <View style={styles.loginForm}>
           <TextInput
             style={styles.simpleInput}
-            placeholder="Enter Email address"
+            placeholder="Skriv inn e-post adresse"
             placeholderTextColor={firstColor}
           />
           <TextInput
             style={styles.simpleInput}
-            placeholder="Enter Password"
+            placeholder="Oppgi passord"
             placeholderTextColor={firstColor}
           />
           <Text style={styles.registerTxt}>Registrer deg her</Text>
@@ -30,7 +30,7 @@ const AuthScreen = () => {
         </View>
         <View style={styles.btnCont}>
           <TouchableOpacity style={styles.myButton}>
-            <Text style={styles.btnTxt}>Login</Text>
+            <Text style={styles.btnTxt}>Logg Inn</Text>
           </TouchableOpacity>
         </View>
       </View>
