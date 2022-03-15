@@ -10,11 +10,10 @@ import React from "react";
 import ScreenHeader from "../Components/ScreenHeader";
 import { darkColor, darkYellow, firstColor, flLightColor } from "../AppColors";
 import { w, h } from "react-native-responsiveness";
-
 const img =
   "https://images.unsplash.com/photo-1517344884509-a0c97ec11bcc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80";
 
-const AuthScreen = ({ navigation }) => {
+const Forgotpassword = ({ navigation }) => {
   return (
     <ImageBackground source={{ uri: img }} style={styles.HomeScreendiv}>
       <View style={styles.HomeScreendiv}>
@@ -26,39 +25,27 @@ const AuthScreen = ({ navigation }) => {
               placeholder="Skriv inn e-post adresse"
               placeholderTextColor={firstColor}
             />
-            <TextInput
-              style={styles.simpleInput}
-              placeholder="Oppgi passord"
-              placeholderTextColor={firstColor}
-            />
-            <TouchableOpacity
-              onPress={() => {
-                navigation.navigate("Forgotpassword");
-              }}
-            >
-              <Text style={styles.forgottxt}>Glemt passord?</Text>
-            </TouchableOpacity>
           </View>
           <View style={styles.btnCont}>
-            <TouchableOpacity
-              onPress={() => {
-                navigation.navigate("WelcomScreen");
-              }}
-              style={styles.myButton}
-            >
-              <Text style={styles.btnTxt}>LOGIN</Text>
+            <TouchableOpacity style={styles.myButton}>
+              <Text style={styles.btnTxt}>RESET</Text>
             </TouchableOpacity>
           </View>
           <TouchableOpacity>
-            <Text style={styles.registerTxt}>Registrer deg her</Text>
+            <Text
+              style={styles.registerTxt}
+              onPress={() => {
+                navigation.goBack();
+              }}
+            >
+              Go Back ?
+            </Text>
           </TouchableOpacity>
         </View>
       </View>
     </ImageBackground>
   );
 };
-
-export default AuthScreen;
 
 const styles = StyleSheet.create({
   HomeScreendiv: {
@@ -124,3 +111,4 @@ const styles = StyleSheet.create({
     color: flLightColor,
   },
 });
+export default Forgotpassword;

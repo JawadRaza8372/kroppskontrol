@@ -4,8 +4,10 @@ import ScreenHeader from "../Components/ScreenHeader";
 import { darkColor, darkYellow } from "../AppColors";
 import { w, h } from "react-native-responsiveness";
 import MatOpsIremComp from "../Components/MatOpsIremComp";
+
+// food recipes
 const MatOpskrifterScreen = () => {
-  const myString = "Mat\nOppskrifter";
+  const myString = "Mat Oppskrifter";
   const itmsArr = [
     {
       title: "Balansert kost",
@@ -83,12 +85,12 @@ const styles = StyleSheet.create({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "rgba(0,0,0,0.4)",
+    backgroundColor: "rgba(0,0,0,0.7)",
     position: "absolute",
     top: 0,
   },
   filltxt: {
-    fontSize: h("7%"),
+    fontSize: h("5%"),
     color: darkYellow,
     textAlign: "center",
   },

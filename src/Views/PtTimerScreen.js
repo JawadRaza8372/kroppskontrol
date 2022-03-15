@@ -5,6 +5,7 @@ import { darkColor, darkYellow } from "../AppColors";
 import { w, h } from "react-native-responsiveness";
 import HomeItmComp from "../Components/HomeItmComp";
 import PtTimerItmComp from "../Components/PtTimerItmComp";
+
 const PtTimerScreen = () => {
   const newArry = [
     {
@@ -43,7 +44,7 @@ const PtTimerScreen = () => {
           style={styles.screenImge}
         />
         <View style={styles.fillback}>
-          <Text style={styles.filltxt}>PT</Text>
+          <Text style={styles.filltxt}>Personlig trener</Text>
         </View>
       </View>
       <ScrollView contentContainerStyle={styles.contentDiv}>
@@ -92,12 +93,12 @@ const styles = StyleSheet.create({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "rgba(0,0,0,0.4)",
+    backgroundColor: "rgba(0,0,0,0.7)",
     position: "absolute",
     top: 0,
   },
   filltxt: {
-    fontSize: h("7%"),
+    fontSize: h("6%"),
     color: darkYellow,
   },
 });

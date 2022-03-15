@@ -1,7 +1,7 @@
 import { StyleSheet, Text, TouchableOpacity, View, Image } from "react-native";
 import React from "react";
 import { w, h } from "react-native-responsiveness";
-import { darkColor, flLightColor, lightColor } from "../AppColors";
+import { darkColor, flLightColor } from "../AppColors";
 const HomeItmComp = ({ title, description, imglink }) => {
   return (
     <View style={styles.mainDiv}>

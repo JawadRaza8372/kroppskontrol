@@ -1,39 +1,39 @@
-// import { NavigationContainer } from "@react-navigation/native";
-// import { createNativeStackNavigator } from "@react-navigation/native-stack";
-// import LoginScreen from "../Views/LoginScreen";
-// import CommitmentScreen from "../Views/CommitmentScreen";
-// import DashboardScreen from "../Views/DashboardScreen";
-// import SignUpScreen from "../Views/SignUpScreen";
-// import SplashScreen from "../Views/SplashScreen";
-// import PersonInfoScreen from "../Views/PersonInfoScreen";
-// import PhoneInfoScreen from "../Views/PhoneInfoScreen";
-// import WelcomeScreen from "../Views/WelcomeScreen";
-// import LoanSelectScreen from "../Views/LoanSelectScreen";
-// import ResetPwsdScreen from "../Views/ResetPwsdScreen";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-// const Stack = createNativeStackNavigator();
+import AuthScreen from "../Views/AuthScreen";
+import GrupiTimerScreen from "../Views/GrupiTimerScreen";
+import HomeScreen from "../Views/HomeScreen";
+import MatOpskrifterScreen from "../Views/MatOpskrifterScreen";
+import PtTimerScreen from "../Views/PtTimerScreen";
+import WelcomScreen from "../Views/WelcomScreen";
+import SplashScreen from "../Views/SplashScreen";
+import Forgotpassword from "../Views/Forgotpassword";
 
-// const LoanAppNavigation = () => {
-//   return (
-//     <NavigationContainer>
-//       <Stack.Navigator
-//         screenOptions={{
-//           headerShown: false,
-//         }}
-//       >
-//         <Stack.Screen name="SplashScreen" component={SplashScreen} />
-//         <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
-//         <Stack.Screen name="LoginScreen" component={LoginScreen} />
-//         <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
-//         <Stack.Screen name="ResetPswdScreen" component={ResetPwsdScreen} />
-//         <Stack.Screen name="DashboardScreen" component={DashboardScreen} />
-//         <Stack.Screen name="LoanSelectScreen" component={LoanSelectScreen} />
-//         <Stack.Screen name="PhoneInfoScreen" component={PhoneInfoScreen} />
-//         <Stack.Screen name="PersonInfoScreen" component={PersonInfoScreen} />
-//         <Stack.Screen name="CommitmentScreen" component={CommitmentScreen} />
-//       </Stack.Navigator>
-//     </NavigationContainer>
-//   );
-// };
+const Stack = createNativeStackNavigator();
 
-// export default LoanAppNavigation;
+const CustomNavigator = () => {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator
+        screenOptions={{
+          headerShown: false,
+        }}
+      >
+        <Stack.Screen name="SplashScreen" component={SplashScreen} />
+        <Stack.Screen name="AuthScreen" component={AuthScreen} />
+        <Stack.Screen name="Forgotpassword" component={Forgotpassword} />
+        <Stack.Screen name="WelcomScreen" component={WelcomScreen} />
+        <Stack.Screen name="PtTimerScreen" component={PtTimerScreen} />
+        <Stack.Screen
+          name="MatOpskrifterScreen"
+          component={MatOpskrifterScreen}
+        />
+        <Stack.Screen name="HomeScreen" component={HomeScreen} />
+        <Stack.Screen name="GrupiTimerScreen" component={GrupiTimerScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+};
+
+export default CustomNavigator;

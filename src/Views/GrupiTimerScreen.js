@@ -10,11 +10,11 @@ const GrupiTimerScreen = () => {
   const newArry = [
     {
       title: "Generelle info",
-      desc: "Cardio grupper:\nCardio step\nBodyshape\nTransformer",
+      desc: "Cardio grupper:Cardio step Bodyshape Transformer",
     },
     {
       title: "Gruppetimer",
-      desc: "Be still gruppetime na og fa\ngod tillbud..",
+      desc: "Be still gruppetime na og fa god tillbud..",
     },
     { title: "Solotimer" },
     { title: "Tren med enn ven!", desc: "studentpakke-trening pa\nbudjest" },
@@ -32,7 +32,7 @@ const GrupiTimerScreen = () => {
           style={styles.screenImge}
         />
         <View style={styles.fillback}>
-          <Text style={styles.filltxt}>PT</Text>
+          <Text style={styles.filltxt}>Sosial trening</Text>
         </View>
       </View>
       <ScrollView contentContainerStyle={styles.contentDiv}>

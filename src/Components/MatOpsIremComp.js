@@ -2,6 +2,7 @@ import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import React from "react";
 import { darkColor, flLightColor } from "../AppColors";
 import { w, h } from "react-native-responsiveness";
+
 const MatOpsIremComp = ({ title, subtitle }) => {
   return (
     <View style={styles.mainDiv}>
@@ -20,7 +21,7 @@ export default MatOpsIremComp;
 
 const styles = StyleSheet.create({
   mainDiv: {
-    width: w("87%"),
+    width: w("90%"),
     height: h("25%"),
     backgroundColor: darkColor,
     marginBottom: h("1%"),
@@ -29,7 +30,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
     flexDirection: "column",
     alignSelf: "center",
-    borderRadius: h("5%"),
+    borderRadius: h("1%"),
     overflow: "hidden",
   },
   headingText: {
@@ -48,9 +49,9 @@ const styles = StyleSheet.create({
   },
   btnCont: {
     width: "95%",
-    marginRight: w("6%"),
+    // marginRight: w("6%"),
     display: "flex",
-    alignItems: "flex-end",
+    alignItems: "center",
   },
   descrptText: {
     fontSize: h("2%"),
@@ -64,15 +65,17 @@ const styles = StyleSheet.create({
     marginBottom: h("1%"),
   },
   myButton: {
-    height: h("4%"),
-    width: w("30%"),
+    height: h("5%"),
+    width: w("40%"),
     backgroundColor: flLightColor,
-    borderRadius: w("10%"),
+    borderRadius: w("2%"),
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
   },
   btnTxt: {
     fontSize: h("2.3%"),
+    fontWeight: "bold",
+    color: darkColor,
   },
 });

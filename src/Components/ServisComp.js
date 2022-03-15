@@ -4,20 +4,30 @@ import { w, h } from "react-native-responsiveness";
 import { darkColor, darkYellow, firstColor, flLightColor } from "../AppColors";
 import { AntDesign } from "@expo/vector-icons";
 
-const ServisComp = ({ title, description, imglink }) => {
+const ServisComp = ({
+  title,
+  description,
+  imglink,
+  bg,
+  textcolor,
+  onPress,
+}) => {
   return (
-    <View style={styles.servsMainDiv}>
-      <Text style={styles.titleTxt}>{title}</Text>
+    <TouchableOpacity
+      onPress={onPress}
+      style={[styles.servsMainDiv, { backgroundColor: bg }]}
+    >
+      <Text style={[styles.titleTxt, { color: textcolor }]}>{title}</Text>
       <View style={styles.descCont}>
         <Text style={styles.description}>{description}</Text>
         <View style={styles.imgContain}>
           <Image source={{ uri: `${imglink}` }} style={styles.imgShows} />
         </View>
       </View>
-      <TouchableOpacity style={styles.button}>
-        <AntDesign name="arrowright" size={h("4%")} color="black" />
-      </TouchableOpacity>
-    </View>
+      <View style={styles.button}>
+        <AntDesign name="arrowright" size={h("4%")} color="#062C30" />
+      </View>
+    </TouchableOpacity>
   );
 };
 
@@ -28,17 +38,18 @@ const styles = StyleSheet.create({
     width: "45%",
     height: h("25%"),
     backgroundColor: darkYellow,
-    borderRadius: 20,
+    borderRadius: h("1%"),
     marginBottom: h("2%"),
     padding: 10,
     overflow: "hidden",
   },
   titleTxt: {
-    fontSize: h("2.7%"),
+    fontSize: h("2.0%"),
     color: darkColor,
     width: "95%",
     alignSelf: "center",
     fontWeight: "bold",
+    marginBottom: h("1%"),
   },
   button: {
     width: "100%",
@@ -56,18 +67,19 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     flexDirection: "row",
-    overflow: "hidden",
+    // overflow: "hidden",
   },
   description: {
     fontSize: h("1.8%"),
-    color: firstColor,
+    color: "#062C30",
     width: "50%",
   },
   imgContain: {
     width: "40%",
     height: "100%",
-    borderRadius: h("5%"),
+    borderRadius: h("1%"),
     overflow: "hidden",
+    resizeMode: "contain",
   },
   imgShows: {
     width: "100%",
