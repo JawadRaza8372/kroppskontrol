@@ -10,7 +10,7 @@ const GrupiTimerScreen = () => {
   const newArry = [
     {
       title: "Generelle info",
-      desc: "Cardio grupper:\nCardio step\nBody Shape\nTransformer",
+      desc: "Cardio grupper:\nCardio step\nBodyshape\nTransformer",
     },
     {
       title: "Gruppetimer",
@@ -37,7 +37,7 @@ const GrupiTimerScreen = () => {
       </View>
       <ScrollView contentContainerStyle={styles.contentDiv}>
         {newArry.map((dat, index) => (
-          <PtTimerItmComp key={index} title={dat.title} desc={dat.desc} />
+          <PtTimerItmComp key={index} title={dat.title} subtitle={dat.desc} />
         ))}
       </ScrollView>
     </View>
