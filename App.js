@@ -1,4 +1,5 @@
 import { StyleSheet, Text, View, StatusBar } from "react-native";
+import OrderComponents from "./src/Components/OrderComponents";
 import AuthScreen from "./src/Views/AuthScreen";
 import GrupiTimerScreen from "./src/Views/GrupiTimerScreen";
 import HomeScreen from "./src/Views/HomeScreen";
@@ -14,7 +15,8 @@ export default function App() {
       {/* <GrupiTimerScreen /> */}
       {/* <WelcomScreen /> */}
       {/* <MatOpskrifterScreen /> */}
-      <AuthScreen />
+      {/* <AuthScreen /> */}
+      <OrderComponents />
     </>
   );
 }
