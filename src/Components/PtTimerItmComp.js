@@ -5,6 +5,7 @@ import { w, h } from "react-native-responsiveness";
 const PtTimerItmComp = ({ title, subtitle, desc }) => {
   title = title ? title : " ";
   subtitle = subtitle ? subtitle : " ";
+  // above two lines are like if then else means first line says if you dont have title when function is called set it to an space bar letter if we don't code it like this this cause an error
   return (
     <View style={styles.mainDiv}>
       <Text style={styles.headingText}>{title}</Text>

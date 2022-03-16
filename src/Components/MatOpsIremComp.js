@@ -4,6 +4,7 @@ import { darkColor, flLightColor } from "../AppColors";
 import { w, h } from "react-native-responsiveness";
 
 const MatOpsIremComp = ({ title, subtitle }) => {
+  // this component is a card having info about service with an button to exppolre it more
   return (
     <View style={styles.mainDiv}>
       <Text style={styles.headingText}>{title}</Text>

@@ -12,6 +12,12 @@ const ServisComp = ({
   textcolor,
   onPress,
 }) => {
+  //   title,
+  // description,
+  // imglink,
+  // bg,
+  // textcolor,
+  // onPress, these are all props cooming from the screen where it is called if it is called in map function then array's data will be in these attributes
   return (
     <TouchableOpacity
       onPress={onPress}
@@ -19,6 +25,7 @@ const ServisComp = ({
     >
       <Text style={[styles.titleTxt, { color: textcolor }]}>{title}</Text>
       <View style={styles.descCont}>
+        {/* this view will show text and image side by side */}
         <Text style={styles.description}>{description}</Text>
         <View style={styles.imgContain}>
           <Image source={{ uri: `${imglink}` }} style={styles.imgShows} />

@@ -13,17 +13,22 @@ const img =
 
 const SplashScreen = ({ navigation }) => {
   useEffect(() => {
+    // after 7 seconds screen will change itself due to this function
     setTimeout(() => {
-      navigation.navigate("AuthScreen");
+      navigation.navigate("LoginScreen");
     }, 7000);
   }, []);
 
   return (
     <ImageBackground source={{ uri: img }} style={styles.imgBg}>
+      {/* ImageBackground will set the image as background from the given link */}
+      {/* View is just like div */}
       <View style={styles.imgBg}>
         <Text style={styles.htext}>Kroppskontrol</Text>
         <View style={styles.spaceing} />
+        {/* loading component Start */}
         <ActivityIndicator size="large" color="#fff" />
+        {/* loading component End */}
       </View>
     </ImageBackground>
   );

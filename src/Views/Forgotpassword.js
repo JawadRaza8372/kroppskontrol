@@ -16,7 +16,11 @@ const img =
 const Forgotpassword = ({ navigation }) => {
   return (
     <ImageBackground source={{ uri: img }} style={styles.HomeScreendiv}>
+      {/* ImageBackground will set the image as background from the given link */}
+
       <View style={styles.HomeScreendiv}>
+        {/* screen header is a custom component for header in app */}
+
         <ScreenHeader />
         <View style={styles.loginCont}>
           <View style={styles.loginForm}>
@@ -31,6 +35,7 @@ const Forgotpassword = ({ navigation }) => {
               <Text style={styles.btnTxt}>RESET</Text>
             </TouchableOpacity>
           </View>
+          {/* navigation.goBack()  will send you to previous screen whatever it was */}
           <TouchableOpacity>
             <Text
               style={styles.registerTxt}

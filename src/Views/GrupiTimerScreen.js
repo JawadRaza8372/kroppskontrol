@@ -35,6 +35,9 @@ const GrupiTimerScreen = () => {
           <Text style={styles.filltxt}>Sosial trening</Text>
         </View>
       </View>
+      {/* in map function we want to repeat this component but with differant content means same look but differnt data so we provide data in aaray and with map we spcified that which attribute should have which array's object data */}
+      {/* navigation.navigate("screen name") will be responsible to go from current screen to next screen whose name you will mantion */}
+
       <ScrollView contentContainerStyle={styles.contentDiv}>
         {newArry.map((dat, index) => (
           <PtTimerItmComp key={index} title={dat.title} subtitle={dat.desc} />

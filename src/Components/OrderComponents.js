@@ -4,6 +4,7 @@ import { w, h } from "react-native-responsiveness";
 import { darkColor } from "../AppColors";
 import { flLightColor, darkYellow } from "../AppColors";
 const OrderComponents = () => {
+  // component rsponsible for the order information or servis inforamation that you are now going to buy
   return (
     <View style={styles.orderDiv}>
       <Text style={styles.heading}>PT Pakke 1</Text>

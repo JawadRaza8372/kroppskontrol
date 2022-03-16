@@ -35,6 +35,7 @@ const PtTimerScreen = () => {
   ];
   return (
     <View style={styles.HomeScreendiv}>
+      {/* screen header is a custom component for header in app */}
       <ScreenHeader />
       <View style={styles.imageContainer}>
         <Image
@@ -47,7 +48,10 @@ const PtTimerScreen = () => {
           <Text style={styles.filltxt}>Personlig trener</Text>
         </View>
       </View>
+      {/* Scroll view is a type of view it will automatically make the overflow contetnt scrollable  */}
       <ScrollView contentContainerStyle={styles.contentDiv}>
+        {/* newArry is an array and map function runs like a loop untill it meets its conditions instead map function will repeat the process equal the number of length of an array */}
+        {/* PtTimerItmComp is also another component used here to show data  */}
         {newArry.map((dat, index) => (
           <PtTimerItmComp
             key={index}
