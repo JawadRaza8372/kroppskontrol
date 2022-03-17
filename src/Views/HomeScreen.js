@@ -4,6 +4,7 @@ import {
   TouchableOpacity,
   View,
   ImageBackground,
+  Image,
 } from "react-native";
 import React from "react";
 import { firstColor, darkYellow, flLightColor } from "../AppColors";
@@ -65,7 +66,11 @@ const HomeScreen = ({ navigation }) => {
       <View style={styles.wlcomeScreendiv}>
         <View style={styles.headerDiv}>
           {/* this is just another header but its background color is transparent so whaterver lies behind it is esily vivble */}
-          <Text style={styles.logoText}>Kroppskontrol</Text>
+          {/* <Text style={styles.logoText}>Kroppskontrol</Text> */}
+          <Image
+            source={require("../../assets/onlyBlack.png")}
+            style={styles.logoSet}
+          />
         </View>
 
         <View style={styles.otherContent}>
@@ -186,6 +191,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     // opacity: 0.5,
+  },
+  logoSet: {
+    width: "100%",
+    height: "90%",
+    resizeMode: "center",
+    tintColor: flLightColor,
   },
   logoText: {
     fontSize: h("3%"),
