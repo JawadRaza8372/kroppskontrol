@@ -45,7 +45,7 @@ const LoginScreen = ({ navigation }) => {
             {/* this button will responsible to move from forgot password screen to home screen */}
             <TouchableOpacity
               onPress={() => {
-                navigation.navigate("HomeScreen");
+                navigation.navigate("HomeSrceen");
               }}
               style={styles.myButton}
             >
