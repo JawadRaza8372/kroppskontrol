@@ -124,7 +124,6 @@ const styles = StyleSheet.create({
   registerTxt: {
     fontSize: h("2.4%"),
     color: flLightColor,
-    marginBottom: h("2%"),
   },
   registerdiv: {
     height: h("4%"),
