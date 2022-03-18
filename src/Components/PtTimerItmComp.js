@@ -1,25 +1,37 @@
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { darkColor, flLightColor } from "../AppColors";
 import { w, h } from "react-native-responsiveness";
+import CustomModel from "./CustomModel";
 const PtTimerItmComp = ({ title, subtitle, desc }) => {
   title = title ? title : " ";
   subtitle = subtitle ? subtitle : " ";
+  const [modalVisible, setmodalVisible] = useState(false);
+  const toggleModal = () => {
+    setmodalVisible(!modalVisible);
+  };
   // above two lines are like if then else means first line says if you dont have title when function is called set it to an space bar letter if we don't code it like this this cause an error
   return (
-    <View style={styles.mainDiv}>
-      <Text style={styles.headingText}>{title}</Text>
-      <View style={styles.textARg}>
-        <Text style={styles.subtitleTxt}>{subtitle}</Text>
-        <Text style={styles.descrptText}>{desc}</Text>
-      </View>
+    <>
+      <View style={styles.mainDiv}>
+        <Text style={styles.headingText}>{title}</Text>
+        <View style={styles.textARg}>
+          <Text style={styles.subtitleTxt}>{subtitle}</Text>
+          <Text style={styles.descrptText}>{desc}</Text>
+        </View>
 
-      <View style={styles.btnCont}>
-        <TouchableOpacity style={styles.myButton}>
-          <Text style={styles.btnTxt}>Vis mer</Text>
-        </TouchableOpacity>
+        <View style={styles.btnCont}>
+          <TouchableOpacity onPress={toggleModal} style={styles.myButton}>
+            <Text style={styles.btnTxt}>Vis mer</Text>
+          </TouchableOpacity>
+        </View>
       </View>
-    </View>
+      <CustomModel
+        showModal={modalVisible}
+        toggleModal={toggleModal}
+        data={{ title, desc: desc ? desc : subtitle }}
+      />
+    </>
   );
 };
 

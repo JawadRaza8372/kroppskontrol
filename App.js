@@ -10,28 +10,17 @@ import axios from "axios";
 //api key
 // 9f4d33685af1d0dada1e8b613e0ee3d1df6686a6fc572c2b907acb8eb38efd81
 export default function App() {
-  const ifWorking = () => {
-    // var loginClient = new jsonrpc_client({
-    //   url: "https://user-api.simplybook.me" + "/login",
-    //   onerror: function (error) {},
-    // });
-    const loginClient = fetch("https://user-api.simplybook.me/login", {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-    });
-    Promise.bind(loginClient);
-    // var token = loginClient.getServiceUrl("kroppskontroll");
-    //
-    // const check = await axios.get(" https://user-api.simplybook.me/login");
-    // let geting = check?.getServiceUrl("kroppskontroll");
-    console.log("checking=> ", loginClient);
-  };
-  useEffect(() => {
-    ifWorking();
-  }, []);
+  // const ifWorking = async () => {
+  //   const check = await axios.post("https://user-api.simplybook.me/login", {
+  //     companyLogin: " kroppskontroll",
+  //     userLogin: "admin",
+  //     userPassword: "Ballahalla55555",
+  //   });
+  //   console.log("checking=> ", check);
+  // };
+  // useEffect(() => {
+  //   ifWorking();
+  // }, []);
 
   return (
     <>

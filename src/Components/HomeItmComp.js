@@ -1,26 +1,38 @@
 import { StyleSheet, Text, TouchableOpacity, View, Image } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { w, h } from "react-native-responsiveness";
+import CustomModel from "./CustomModel";
 import { darkColor, flLightColor } from "../AppColors";
 const HomeItmComp = ({ title, description, imglink }) => {
+  const [modalVisible, setmodalVisible] = useState(false);
+  const toggleModal = () => {
+    setmodalVisible(!modalVisible);
+  };
   return (
-    <View style={styles.mainDiv}>
-      <Text style={styles.headingText}>{title}</Text>
-      <View style={styles.descriptDiv}>
-        <Text style={styles.descrptText}>{description}</Text>
-        {imglink && (
-          <Image
-            source={{
-              uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJXkUc5huIrCNKkV7gsgLQHbAZE2XAGvFv-g&usqp=CAU",
-            }}
-            style={styles.imgshow}
-          />
-        )}
+    <>
+      <View style={styles.mainDiv}>
+        <Text style={styles.headingText}>{title}</Text>
+        <View style={styles.descriptDiv}>
+          <Text style={styles.descrptText}>{description}</Text>
+          {imglink && (
+            <Image
+              source={{
+                uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJXkUc5huIrCNKkV7gsgLQHbAZE2XAGvFv-g&usqp=CAU",
+              }}
+              style={styles.imgshow}
+            />
+          )}
+        </View>
+        <TouchableOpacity onPress={toggleModal} style={styles.myButton}>
+          <Text style={styles.btnTxt}>Vis mer</Text>
+        </TouchableOpacity>
       </View>
-      <TouchableOpacity style={styles.myButton}>
-        <Text style={styles.btnTxt}>Vis mer</Text>
-      </TouchableOpacity>
-    </View>
+      <CustomModel
+        showModal={modalVisible}
+        toggleModal={toggleModal}
+        data={{ title, desc: description }}
+      />
+    </>
   );
 };
 

@@ -3,18 +3,20 @@ import React from "react";
 import { w, h } from "react-native-responsiveness";
 import { darkColor } from "../AppColors";
 import { flLightColor, darkYellow } from "../AppColors";
-const OrderComponents = () => {
+const OrderComponents = ({ data }) => {
   // component rsponsible for the order information or servis inforamation that you are now going to buy
   return (
     <View style={styles.orderDiv}>
-      <Text style={styles.heading}>PT Pakke 1</Text>
-      <Text style={styles.pakeInfo}>*Pakke Info*</Text>
+      <Text style={styles.heading}>{data.title}</Text>
+      {/* <Text style={styles.pakeInfo}>*Pakke Info*</Text> */}
       <View style={styles.textContain}>
-        <Text style={styles.descInfo}>JJ</Text>
-        <Text style={styles.descInfo}>KK</Text>
-        <Text style={styles.descInfo}>ll</Text>
+        {data.desc && data.desc !== " " && (
+          <Text style={styles.descInfo}>{data.desc}</Text>
+        )}
+        <Text style={styles.descInfo}>Time</Text>
+        <Text style={styles.descInfo}>Price</Text>
       </View>
-      <Text style={styles.pakeInfo}>*Pakke Info*</Text>
+      {/* <Text style={styles.pakeInfo}>*Pakke Info*</Text> */}
       <View style={styles.btnCont}>
         <TouchableOpacity style={styles.myButton}>
           <Text style={styles.btnTxt}>kjøpe</Text>
@@ -28,13 +30,13 @@ export default OrderComponents;
 
 const styles = StyleSheet.create({
   orderDiv: {
-    width: w("70%"),
-    height: h("40%"),
+    width: w("85%"),
+    height: h("50%"),
     backgroundColor: darkColor,
     borderRadius: h("4%"),
     alignSelf: "center",
     overflow: "hidden",
-    padding: 13,
+    padding: 15,
   },
   btnCont: {
     width: "95%",

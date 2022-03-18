@@ -5,8 +5,9 @@ import {
   View,
   TouchableOpacity,
   ImageBackground,
+  Alert,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import ScreenHeader from "../Components/ScreenHeader";
 import { darkColor, darkYellow, firstColor, flLightColor } from "../AppColors";
 import { w, h } from "react-native-responsiveness";
@@ -15,6 +16,21 @@ const img =
   "https://images.unsplash.com/photo-1517344884509-a0c97ec11bcc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80";
 
 const LoginScreen = ({ navigation }) => {
+  const [loginForm, setloginForm] = useState({ email: "", password: "" });
+
+  const onSubmitLogin = () => {
+    if (loginForm.email.length > 0 && loginForm.password.length > 0) {
+      navigation.navigate("HomeSrceen");
+    } else {
+      Alert.alert("Skjema Valideringsfeil", "Fyll ut alle feltene riktig", [
+        {
+          text: "Ok",
+          onPress: () => console.log("Ok Pressed"),
+          style: "ok",
+        },
+      ]);
+    }
+  };
   return (
     <ImageBackground source={{ uri: img }} style={styles.HomeScreendiv}>
       <View style={styles.HomeScreendiv}>
@@ -26,11 +42,29 @@ const LoginScreen = ({ navigation }) => {
               style={styles.simpleInput}
               placeholder="Skriv inn e-post adresse"
               placeholderTextColor={firstColor}
+              value={loginForm.email}
+              onChangeText={(text) => {
+                setloginForm((prevalue) => {
+                  return {
+                    ...prevalue,
+                    email: text,
+                  };
+                });
+              }}
             />
             <TextInput
               style={styles.simpleInput}
               placeholder="Oppgi passord"
               placeholderTextColor={firstColor}
+              value={loginForm.password}
+              onChangeText={(text) => {
+                setloginForm((prevalue) => {
+                  return {
+                    ...prevalue,
+                    password: text,
+                  };
+                });
+              }}
             />
             {/* touchable Opacity is like button this button will be responsible to move from login to forgot password screen */}
             <TouchableOpacity
@@ -43,12 +77,7 @@ const LoginScreen = ({ navigation }) => {
           </View>
           <View style={styles.btnCont}>
             {/* this button will responsible to move from forgot password screen to home screen */}
-            <TouchableOpacity
-              onPress={() => {
-                navigation.navigate("HomeSrceen");
-              }}
-              style={styles.myButton}
-            >
+            <TouchableOpacity onPress={onSubmitLogin} style={styles.myButton}>
               <Text style={styles.btnTxt}>LOGIN</Text>
             </TouchableOpacity>
           </View>

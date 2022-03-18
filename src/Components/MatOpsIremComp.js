@@ -1,20 +1,32 @@
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { darkColor, flLightColor } from "../AppColors";
 import { w, h } from "react-native-responsiveness";
+import CustomModel from "./CustomModel";
 
 const MatOpsIremComp = ({ title, subtitle }) => {
   // this component is a card having info about service with an button to exppolre it more
+  const [modalVisible, setmodalVisible] = useState(false);
+  const toggleModal = () => {
+    setmodalVisible(!modalVisible);
+  };
   return (
-    <View style={styles.mainDiv}>
-      <Text style={styles.headingText}>{title}</Text>
-      <Text style={styles.subtitleTxt}>{subtitle}</Text>
-      <View style={styles.btnCont}>
-        <TouchableOpacity style={styles.myButton}>
-          <Text style={styles.btnTxt}>Vis mer</Text>
-        </TouchableOpacity>
+    <>
+      <View style={styles.mainDiv}>
+        <Text style={styles.headingText}>{title}</Text>
+        <Text style={styles.subtitleTxt}>{subtitle}</Text>
+        <View style={styles.btnCont}>
+          <TouchableOpacity onPress={toggleModal} style={styles.myButton}>
+            <Text style={styles.btnTxt}>Vis mer</Text>
+          </TouchableOpacity>
+        </View>
       </View>
-    </View>
+      <CustomModel
+        showModal={modalVisible}
+        toggleModal={toggleModal}
+        data={{ title, desc: subtitle }}
+      />
+    </>
   );
 };
 
