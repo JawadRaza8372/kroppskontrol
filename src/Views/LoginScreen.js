@@ -20,7 +20,27 @@ const LoginScreen = ({ navigation }) => {
 
   const onSubmitLogin = () => {
     if (loginForm.email.length > 0 && loginForm.password.length > 0) {
-      navigation.navigate("HomeSrceen");
+      if (loginForm.email === "admin@simple.com") {
+        if (loginForm.password === "admin") {
+          navigation.navigate("HomeSrceen");
+        } else {
+          Alert.alert("Auth-feil", "Passordet stemmer ikke", [
+            {
+              text: "Ok",
+              onPress: () => console.log("Ok Pressed"),
+              style: "ok",
+            },
+          ]);
+        }
+      } else {
+        Alert.alert("Auth-feil", "Bruker finnes ikke", [
+          {
+            text: "Ok",
+            onPress: () => console.log("Ok Pressed"),
+            style: "ok",
+          },
+        ]);
+      }
     } else {
       Alert.alert("Skjema Valideringsfeil", "Fyll ut alle feltene riktig", [
         {
@@ -121,6 +141,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "flex-end",
     flexDirection: "column",
+    marginBottom: h("2%"),
   },
   simpleInput: {
     width: "85%",
