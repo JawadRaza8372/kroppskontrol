@@ -9,14 +9,31 @@ import {
 import React, { useEffect } from "react";
 import { w, h } from "react-native-responsiveness";
 import { flLightColor } from "../AppColors";
+import { auth } from "../Database/FirebaseConfig";
+import { useDispatch } from "react-redux";
+import { setAuth } from "../store/authSlice";
 const img =
   "https://images.unsplash.com/photo-1549476464-37392f717541?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80";
 
 const SplashScreen = ({ navigation }) => {
+  const dispatch = useDispatch();
   useEffect(() => {
     // after 7 seconds screen will change itself due to this function
+
     setTimeout(() => {
-      navigation.navigate("LoginScreen");
+      auth.onAuthStateChanged((user) => {
+        if (user) {
+          var uid = { id: user.uid, email: user.email };
+
+          if (uid) {
+            dispatch(setAuth({ auth: uid }));
+            navigation.replace("HomeSrceen");
+          }
+          // ...
+        } else {
+          navigation.replace("LoginScreen");
+        }
+      });
     }, 7000);
   }, []);
 

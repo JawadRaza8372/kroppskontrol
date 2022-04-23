@@ -5,8 +5,10 @@ import { darkColor, darkYellow } from "../AppColors";
 import { w, h } from "react-native-responsiveness";
 import HomeItmComp from "../Components/HomeItmComp";
 import PtTimerItmComp from "../Components/PtTimerItmComp";
-
+import { useSelector } from "react-redux";
 const GrupiTimerScreen = () => {
+  const { isAuth } = useSelector((state) => state.auth);
+
   const newArry = [
     {
       title: "Generelle info",
@@ -21,30 +23,35 @@ const GrupiTimerScreen = () => {
     { title: "Cardiyo" },
     { title: "Styrke" },
   ];
-  return (
-    <View style={styles.HomeScreendiv}>
-      <ScreenHeader />
-      <View style={styles.imageContainer}>
-        <Image
-          source={{
-            uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpjJ5dtkInVRfCliO4BUQXbP4_mlvrSpmNBQ&usqp=CAU",
-          }}
-          style={styles.screenImge}
-        />
-        <View style={styles.fillback}>
-          <Text style={styles.filltxt}>Sosial trening</Text>
+  if (isAuth) {
+    return (
+      <View style={styles.HomeScreendiv}>
+        <ScreenHeader />
+        <View style={styles.imageContainer}>
+          <Image
+            source={{
+              uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpjJ5dtkInVRfCliO4BUQXbP4_mlvrSpmNBQ&usqp=CAU",
+            }}
+            style={styles.screenImge}
+          />
+          <View style={styles.fillback}>
+            <Text style={styles.filltxt}>Sosial trening</Text>
+          </View>
         </View>
-      </View>
-      {/* in map function we want to repeat this component but with differant content means same look but differnt data so we provide data in aaray and with map we spcified that which attribute should have which array's object data */}
-      {/* navigation.navigate("screen name") will be responsible to go from current screen to next screen whose name you will mantion */}
+        {/* in map function we want to repeat this component but with differant content means same look but differnt data so we provide data in aaray and with map we spcified that which attribute should have which array's object data */}
+        {/* navigation.navigate("screen name") will be responsible to go from current screen to next screen whose name you will mantion */}
 
-      <ScrollView contentContainerStyle={styles.contentDiv}>
-        {newArry.map((dat, index) => (
-          <PtTimerItmComp key={index} title={dat.title} subtitle={dat.desc} />
-        ))}
-      </ScrollView>
-    </View>
-  );
+        <ScrollView contentContainerStyle={styles.contentDiv}>
+          {newArry.map((dat, index) => (
+            <PtTimerItmComp key={index} title={dat.title} subtitle={dat.desc} />
+          ))}
+        </ScrollView>
+      </View>
+    );
+  } else {
+    navigation.replace("LoginScreen");
+    return null;
+  }
 };
 
 export default GrupiTimerScreen;

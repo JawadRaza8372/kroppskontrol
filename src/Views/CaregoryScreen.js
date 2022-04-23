@@ -4,7 +4,11 @@ import ScreenHeader from "../Components/ScreenHeader";
 import { darkYellow } from "../AppColors";
 import { w, h } from "react-native-responsiveness";
 import HomeItmComp from "../Components/HomeItmComp";
-const CaregoryScreen = () => {
+import { useSelector } from "react-redux";
+import { NavigationContainer } from "@react-navigation/native";
+const CaregoryScreen = ({ navigation }) => {
+  const { isAuth } = useSelector((state) => state.auth);
+
   const newArry = [
     {
       title: "PT Timer",
@@ -27,32 +31,37 @@ const CaregoryScreen = () => {
       imgstatus: false,
     },
   ];
-  return (
-    <View style={styles.HomeScreendiv}>
-      <ScreenHeader />
-      <View style={styles.imageContainer}>
-        <Image
-          source={{
-            uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpjJ5dtkInVRfCliO4BUQXbP4_mlvrSpmNBQ&usqp=CAU",
-          }}
-          style={styles.screenImge}
-        />
-        {/* this view will contain the image init  */}
-      </View>
-      {/* newArry is an array and map function runs like a loop untill it meets its conditions instead map function will repeat the process equal the number of length of an array */}
-      {/* HomeItmComp is also another component used here to show data  */}
-      <ScrollView contentContainerStyle={styles.contentDiv}>
-        {newArry.map((dat, index) => (
-          <HomeItmComp
-            key={index}
-            title={dat.title}
-            description={dat.desc}
-            imglink={dat.imgstatus}
+  if (isAuth) {
+    return (
+      <View style={styles.HomeScreendiv}>
+        <ScreenHeader />
+        <View style={styles.imageContainer}>
+          <Image
+            source={{
+              uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpjJ5dtkInVRfCliO4BUQXbP4_mlvrSpmNBQ&usqp=CAU",
+            }}
+            style={styles.screenImge}
           />
-        ))}
-      </ScrollView>
-    </View>
-  );
+          {/* this view will contain the image init  */}
+        </View>
+        {/* newArry is an array and map function runs like a loop untill it meets its conditions instead map function will repeat the process equal the number of length of an array */}
+        {/* HomeItmComp is also another component used here to show data  */}
+        <ScrollView contentContainerStyle={styles.contentDiv}>
+          {newArry.map((dat, index) => (
+            <HomeItmComp
+              key={index}
+              title={dat.title}
+              description={dat.desc}
+              imglink={dat.imgstatus}
+            />
+          ))}
+        </ScrollView>
+      </View>
+    );
+  } else {
+    navigation.replace("LoginScreen");
+    return null;
+  }
 };
 
 export default CaregoryScreen;

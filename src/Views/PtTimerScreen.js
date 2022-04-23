@@ -5,8 +5,10 @@ import { darkColor, darkYellow } from "../AppColors";
 import { w, h } from "react-native-responsiveness";
 import HomeItmComp from "../Components/HomeItmComp";
 import PtTimerItmComp from "../Components/PtTimerItmComp";
-
+import { useSelector } from "react-redux";
 const PtTimerScreen = () => {
+  const { isAuth } = useSelector((state) => state.auth);
+
   const newArry = [
     {
       title: "PT Pakke 1",
@@ -33,36 +35,41 @@ const PtTimerScreen = () => {
       desc: "3 deger med person lig \ntrener",
     },
   ];
-  return (
-    <View style={styles.HomeScreendiv}>
-      {/* screen header is a custom component for header in app */}
-      <ScreenHeader />
-      <View style={styles.imageContainer}>
-        <Image
-          source={{
-            uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpjJ5dtkInVRfCliO4BUQXbP4_mlvrSpmNBQ&usqp=CAU",
-          }}
-          style={styles.screenImge}
-        />
-        <View style={styles.fillback}>
-          <Text style={styles.filltxt}>Personlig trener</Text>
-        </View>
-      </View>
-      {/* Scroll view is a type of view it will automatically make the overflow contetnt scrollable  */}
-      <ScrollView contentContainerStyle={styles.contentDiv}>
-        {/* newArry is an array and map function runs like a loop untill it meets its conditions instead map function will repeat the process equal the number of length of an array */}
-        {/* PtTimerItmComp is also another component used here to show data  */}
-        {newArry.map((dat, index) => (
-          <PtTimerItmComp
-            key={index}
-            title={dat.title}
-            subtitle={dat.title}
-            desc={dat.desc}
+  if (isAuth) {
+    return (
+      <View style={styles.HomeScreendiv}>
+        {/* screen header is a custom component for header in app */}
+        <ScreenHeader />
+        <View style={styles.imageContainer}>
+          <Image
+            source={{
+              uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpjJ5dtkInVRfCliO4BUQXbP4_mlvrSpmNBQ&usqp=CAU",
+            }}
+            style={styles.screenImge}
           />
-        ))}
-      </ScrollView>
-    </View>
-  );
+          <View style={styles.fillback}>
+            <Text style={styles.filltxt}>Personlig trener</Text>
+          </View>
+        </View>
+        {/* Scroll view is a type of view it will automatically make the overflow contetnt scrollable  */}
+        <ScrollView contentContainerStyle={styles.contentDiv}>
+          {/* newArry is an array and map function runs like a loop untill it meets its conditions instead map function will repeat the process equal the number of length of an array */}
+          {/* PtTimerItmComp is also another component used here to show data  */}
+          {newArry.map((dat, index) => (
+            <PtTimerItmComp
+              key={index}
+              title={dat.title}
+              subtitle={dat.title}
+              desc={dat.desc}
+            />
+          ))}
+        </ScrollView>
+      </View>
+    );
+  } else {
+    navigation.replace("LoginScreen");
+    return null;
+  }
 };
 
 export default PtTimerScreen;

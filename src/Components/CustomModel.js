@@ -11,7 +11,7 @@ const CustomModel = ({ showModal, toggleModal, data }) => {
       onRequestClose={toggleModal}
     >
       <View style={styles.filldiv}>
-        <OrderComponents data={data} />
+        <OrderComponents data={data} closeModal={toggleModal} />
       </View>
     </Modal>
   );

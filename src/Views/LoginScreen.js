@@ -7,40 +7,67 @@ import {
   ImageBackground,
   Alert,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ScreenHeader from "../Components/ScreenHeader";
 import { darkColor, darkYellow, firstColor, flLightColor } from "../AppColors";
 import { w, h } from "react-native-responsiveness";
-
+import { auth } from "../Database/FirebaseConfig";
+import { useDispatch } from "react-redux";
+import { setAuth } from "../store/authSlice";
 const img =
   "https://images.unsplash.com/photo-1517344884509-a0c97ec11bcc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80";
 
 const LoginScreen = ({ navigation }) => {
+  const dispatch = useDispatch();
   const [loginForm, setloginForm] = useState({ email: "", password: "" });
-
+  useEffect(() => {
+    // after 7 seconds screen will change itself due to this function
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        var uid = { id: user.uid, email: user.email };
+        if (uid) {
+          dispatch(setAuth({ auth: uid }));
+          navigation.replace("HomeSrceen");
+        }
+        // ...
+      } else {
+      }
+    });
+  }, []);
   const onSubmitLogin = () => {
     if (loginForm.email.length > 0 && loginForm.password.length > 0) {
-      if (loginForm.email === "admin@simple.com") {
-        if (loginForm.password === "admin") {
-          navigation.navigate("HomeSrceen");
-        } else {
-          Alert.alert("Auth-feil", "Passordet stemmer ikke", [
-            {
-              text: "Ok",
-              onPress: () => console.log("Ok Pressed"),
-              style: "ok",
-            },
-          ]);
-        }
-      } else {
-        Alert.alert("Auth-feil", "Bruker finnes ikke", [
-          {
-            text: "Ok",
-            onPress: () => console.log("Ok Pressed"),
-            style: "ok",
-          },
-        ]);
-      }
+      let email = loginForm.email;
+      let password = loginForm.password;
+      auth
+        .signInWithEmailAndPassword(email, password)
+        .then((dat) => {
+          console.log(dat.user.uid);
+          navigation.replace("HomeSrceen");
+        })
+        .catch((e) => {
+          alert(e.message);
+        });
+      // if (loginForm.email === "admin@simple.com") {
+      //   if (loginForm.password === "admin") {
+      //     navigation.navigate("HomeSrceen");
+      //   } else {
+      //     Alert.alert("Auth-feil", "Passordet stemmer ikke", [
+      //       {
+      //         text: "Ok",
+      //         onPress: () => console.log("Ok Pressed"),
+      //         style: "ok",
+      //       },
+      //     ]);
+      //   }
+      // } else {
+      //   Alert.alert("Auth-feil", "Bruker finnes ikke", [
+      //     {
+      //       text: "Ok",
+      //       onPress: () => console.log("Ok Pressed"),
+      //       style: "ok",
+      //     },
+      //   ]);
+      // }
     } else {
       Alert.alert("Skjema Valideringsfeil", "Fyll ut alle feltene riktig", [
         {
