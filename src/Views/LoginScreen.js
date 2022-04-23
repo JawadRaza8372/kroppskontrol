@@ -20,6 +20,7 @@ const img =
 const LoginScreen = ({ navigation }) => {
   const dispatch = useDispatch();
   const [loginForm, setloginForm] = useState({ email: "", password: "" });
+  const [signUplayout, setsignUplayout] = useState(false);
   useEffect(() => {
     // after 7 seconds screen will change itself due to this function
     auth.onAuthStateChanged((user) => {
@@ -34,6 +35,29 @@ const LoginScreen = ({ navigation }) => {
       }
     });
   }, []);
+  const onSubmitSignUp = () => {
+    if (loginForm.email.length > 0 && loginForm.password.length > 0) {
+      let email = loginForm.email;
+      let password = loginForm.password;
+      auth
+        .createUserWithEmailAndPassword(email, password)
+        .then((dat) => {
+          console.log(dat);
+          navigation.replace("HomeSrceen");
+        })
+        .catch((e) => {
+          alert(e.message);
+        });
+    } else {
+      Alert.alert("Skjema Valideringsfeil", "Fyll ut alle feltene riktig", [
+        {
+          text: "Ok",
+          onPress: () => console.log("Ok Pressed"),
+          style: "ok",
+        },
+      ]);
+    }
+  };
   const onSubmitLogin = () => {
     if (loginForm.email.length > 0 && loginForm.password.length > 0) {
       let email = loginForm.email;
@@ -47,27 +71,6 @@ const LoginScreen = ({ navigation }) => {
         .catch((e) => {
           alert(e.message);
         });
-      // if (loginForm.email === "admin@simple.com") {
-      //   if (loginForm.password === "admin") {
-      //     navigation.navigate("HomeSrceen");
-      //   } else {
-      //     Alert.alert("Auth-feil", "Passordet stemmer ikke", [
-      //       {
-      //         text: "Ok",
-      //         onPress: () => console.log("Ok Pressed"),
-      //         style: "ok",
-      //       },
-      //     ]);
-      //   }
-      // } else {
-      //   Alert.alert("Auth-feil", "Bruker finnes ikke", [
-      //     {
-      //       text: "Ok",
-      //       onPress: () => console.log("Ok Pressed"),
-      //       style: "ok",
-      //     },
-      //   ]);
-      // }
     } else {
       Alert.alert("Skjema Valideringsfeil", "Fyll ut alle feltene riktig", [
         {
@@ -124,12 +127,25 @@ const LoginScreen = ({ navigation }) => {
           </View>
           <View style={styles.btnCont}>
             {/* this button will responsible to move from forgot password screen to home screen */}
-            <TouchableOpacity onPress={onSubmitLogin} style={styles.myButton}>
-              <Text style={styles.btnTxt}>LOGIN</Text>
-            </TouchableOpacity>
+            {signUplayout ? (
+              <TouchableOpacity
+                onPress={onSubmitSignUp}
+                style={styles.myButton}
+              >
+                <Text style={styles.btnTxt}>Register</Text>
+              </TouchableOpacity>
+            ) : (
+              <TouchableOpacity onPress={onSubmitLogin} style={styles.myButton}>
+                <Text style={styles.btnTxt}>LOGIN</Text>
+              </TouchableOpacity>
+            )}
           </View>
-          <TouchableOpacity>
-            <Text style={styles.registerTxt}>Registrer deg her</Text>
+          <TouchableOpacity onPress={() => setsignUplayout(!signUplayout)}>
+            <Text style={styles.registerTxt}>
+              {signUplayout
+                ? "Har du allerede en konto? Logg inn"
+                : "Registrer deg her"}
+            </Text>
           </TouchableOpacity>
         </View>
       </View>
