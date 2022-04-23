@@ -19,6 +19,21 @@ const HomeScreen = ({ navigation }) => {
   const { isAuth } = useSelector((state) => state.auth);
   const otherString = "Akutt og forebyggende helsetiltak gjennom hele livet";
   const btnInfo = "Gavekort";
+  useEffect(() => {
+    // after 7 seconds screen will change itself due to this function
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        console.log(user);
+        var uid = user.uid;
+        console.log(uid);
+        if (uid) {
+          dispatch(setAuth({ auth: uid }));
+        }
+        // ...
+      } else {
+      }
+    });
+  }, []);
 
   const exrItems = [
     {
